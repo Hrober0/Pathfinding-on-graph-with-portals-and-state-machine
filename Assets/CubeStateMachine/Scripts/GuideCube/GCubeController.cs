@@ -14,9 +14,6 @@ namespace GuideCube
         [Header("Flying attributes")]
         [SerializeField] private float flyingSpeed = 5f;
 
-        [Header("Distances")]
-        [SerializeField, Min(1)] private float maxDistFollowObject = 20f;
-
         private GCubeState currentState;
         private GCubeState defaultState;
         private readonly List<GCubeState> nextStates = new List<GCubeState>();
@@ -114,7 +111,6 @@ namespace GuideCube
         public Vector3 Position => transform.position;
 
 
-        public float MaxDistFollowObject => maxDistFollowObject;
         public GCubeState CurrentState => currentState;
 
 
