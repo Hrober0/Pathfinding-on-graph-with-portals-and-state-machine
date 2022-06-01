@@ -17,7 +17,13 @@ namespace Pathfinding
 
 
         [SerializeField, ReadOnly] protected List<PathPoint> connectedPoints = new List<PathPoint>();
-        public List<PathPoint> ConnectedPoints => connectedPoints;
+        public IReadOnlyList<PathPoint> ConnectedPoints => connectedPoints;
+
+
+        /// <summary>
+        /// Add other path points in range to connectedPoints list
+        /// </summary>
+        /// <param name="allPoints">All path points on the map</param>
         public virtual void FindConnectedPoints(PathPoint[] allPoints)
         {
             if (connectedPoints != null)
@@ -43,6 +49,10 @@ namespace Pathfinding
                 }
             }
         }
+
+        /// <summary>
+        /// Remove path points from connectedPoints list that do have not enough range 
+        /// </summary>
         public virtual void FixConnectedPoints()
         {
             for (int i = 0; i < connectedPoints.Count; i++)
@@ -57,6 +67,10 @@ namespace Pathfinding
         [Button("Update Points")]
         private void ButtonUdatePoints() => Pathfinder.UpdatePoints();
 
+
+        /// <summary>
+        /// Calculate distance to second point
+        /// </summary>
         public virtual float Distance(PathPoint secondPoint) => Vector3.Distance(Position, secondPoint.Position);
 
         public Vector3 Position => transform.position;

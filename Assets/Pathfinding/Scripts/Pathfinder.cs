@@ -36,11 +36,16 @@ namespace Pathfinding
         public static LayerMask PathBlockers => Instance == null ? (LayerMask)defultPathBlockers : Instance.pathBlockers;
         public static bool ShowConnections => Instance == null ? false : Instance.showConnections;
 
+
         private void Awake()
         {
             UpdatePoints();
         }
 
+
+        /// <summary>
+        /// Update connections between path points
+        /// </summary>
         public static void UpdatePoints()
         {
             allPoints = FindObjectsOfType<PathPoint>();
@@ -51,6 +56,11 @@ namespace Pathfinding
                 point.FixConnectedPoints();
         }
 
+
+        /// <summary>
+        /// Find path from start position to target position using pat points
+        /// </summary>
+        /// <returns>list of path points and the closest position near the target</returns>
         public static (List<PathPoint> path, Vector3 fixedTarget) FindPath(Vector3 startPosition, Vector3 targetPosition)
         {
             UpdatePoints();
@@ -120,6 +130,10 @@ namespace Pathfinding
 
             return (path, targetPosition);
         }
+
+        /// <summary>
+        /// Create path based on cost, that was set before
+        /// </summary>
         private static List<PathPoint> CreatePath(PathPoint startPoint, PathPoint endPoint)
         {
             List<PathPoint> openSet = new List<PathPoint>();
@@ -197,6 +211,9 @@ namespace Pathfinding
         }
 
 
+        /// <summary>
+        /// Find the closest point near to given position
+        /// </summary>
         public static PathPoint FindClosestPoint(Vector3 position)
         {
             if (allPoints.Length == 0)
@@ -217,6 +234,11 @@ namespace Pathfinding
 
             float Dist(PathPoint point) => Vector3.Distance(point.transform.position, position);
         }
+
+        /// <summary>
+        /// Find the line between two connected points where distance to the position is the shortest 
+        /// </summary>
+        /// <returns>two extreme points of the found line where one is closer to given position</returns>
         private static (PathPoint closestPoint, PathPoint secondLinePoint) FindClosestLine(Vector3 position)
         {
             PathPoint firstLinePoint = null;

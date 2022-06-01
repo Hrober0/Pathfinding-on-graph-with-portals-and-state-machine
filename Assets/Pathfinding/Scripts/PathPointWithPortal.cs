@@ -14,6 +14,11 @@ namespace Pathfinding
         public Transform PortalOffset => portalOffset;
         public void SetConnectedPortalPoint(PathPointWithPortal point) => connectedPortalPoint = point;
 
+
+        /// <summary>
+        /// Add other path points in range and connectedPortalPoint to connectedPoints list
+        /// </summary>
+        /// <param name="allPoints">All path points on the map</param>
         public override void FindConnectedPoints(PathPoint[] allPoints)
         {
             base.FindConnectedPoints(allPoints);
@@ -22,6 +27,10 @@ namespace Pathfinding
                 connectedPoints.Add(connectedPortalPoint);
         }
 
+
+        /// <summary>
+        /// Calculate the distance to the second point taking into account the portal
+        /// </summary>
         public override float Distance(PathPoint secondPoint)
         {
             if (secondPoint == connectedPortalPoint)
