@@ -12,8 +12,6 @@ There are 3 basic states:
 - Follow object
 
 
-Made with Unity and C#
-
 Pathfinding video: https://www.youtube.com/watch?v=cvg2pc2LpKg
 
 The whole system was used in-game named Errata.
@@ -29,5 +27,9 @@ State machine controller: https://github.com/Hrober0/Pathfinding-on-graph-with-p
 Folder with states: https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/tree/main/Assets/CubeStateMachine/Scripts/States
 
 
-#### Used additional package:
+## Used Technologies
+
+#### Unity and C#
+
+#### Additional package:
 - NaughtyAttributes (extension for the Unity Inspector):  https://github.com/dbrizov/NaughtyAttributes
