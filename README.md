@@ -14,7 +14,7 @@ There are 3 basic states:
 
 Pathfinding video: [youtube.com/hrober/pathfinding](https://www.youtube.com/watch?v=cvg2pc2LpKg)
 
-The whole system was used in-game named Errata.
+The whole system was used in-game named Errata.<br>
 Errata trailer: [youtube.com/errata-trailer](https://www.youtube.com/watch?v=JyS9zIQbpxQ)
 
 
