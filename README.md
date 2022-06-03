@@ -12,22 +12,22 @@ There are 3 basic states:
 - Follow object
 
 
-Pathfinding video: https://www.youtube.com/watch?v=cvg2pc2LpKg
+Pathfinding video: [youtube.com/hrober/pathfinding](https://www.youtube.com/watch?v=cvg2pc2LpKg)
 
 The whole system was used in-game named Errata.
-Errata trailer: https://youtu.be/JyS9zIQbpxQ
+Errata trailer: [youtube.com/errata-trailer](https://www.youtube.com/watch?v=JyS9zIQbpxQ)
 
 
 ## Interesting parts
 
 Pathfinding main script:<br>
-https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/blob/main/Assets/Pathfinding/Scripts/Pathfinder.cs
+[/github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/Scripts/Pathfinder.cs](https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/blob/main/Assets/Pathfinding/Scripts/Pathfinder.cs)
 
 State machine controller:<br>
-https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/blob/main/Assets/CubeStateMachine/Scripts/GCubeController.cs
+[/github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/Scripts/GCubeController.cs](https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/blob/main/Assets/CubeStateMachine/Scripts/GCubeController.cs)
 
 Folder with states:<br>
-https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/tree/main/Assets/CubeStateMachine/Scripts/States
+[/github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/Scripts/States](https://github.com/Hrober0/Pathfinding-on-graph-with-portals-and-state-machine/tree/main/Assets/CubeStateMachine/Scripts/States)
 
 
 ## Used Technologies
