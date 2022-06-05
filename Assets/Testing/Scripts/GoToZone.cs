@@ -10,13 +10,13 @@ namespace Testing
         [SerializeField] private GCubeController controller;
         [SerializeField] private Transform waitingPoint;
 
-        private GCubeState lastStat;
+        private GCubeState lastState;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<Target>() != null)
             {
-                lastStat = controller.CurrentState;
+                lastState = controller.CurrentState;
 
                 controller.SetState(
                     new GCSGoTo(waitingPoint.position),
@@ -29,7 +29,7 @@ namespace Testing
         {
             if (other.GetComponent<Target>() != null)
             {
-                controller.SetState(lastStat);
+                controller.SetState(lastState);
             }
         }
     }
