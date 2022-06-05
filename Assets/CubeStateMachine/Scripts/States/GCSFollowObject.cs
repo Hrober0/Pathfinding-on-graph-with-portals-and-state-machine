@@ -1,55 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GuideCube
 {
     public class GCSFollowObject : GCubeState
     {
-        private readonly Transform objectToFollow;
-        private readonly float keepingDistance;
+        private readonly Transform targetTransform;
+        private readonly float distanceToKeep;
 
         private const float updateDelay = 0.2f;
-        private const float minMove = 0.1f;
+        private const float positionUpdateThreshold = 0.1f;
 
-        private Vector3 lastObjectPosition;
-        private IEnumerator chcker;
+        private Vector3 targetLastPosition;
+        private Coroutine activeCoroutine;
 
-        public GCSFollowObject(Transform objectToFollow, float keepingDistance)
+        public GCSFollowObject(Transform targetTransform, float distanceToKeep)
         {
-            this.objectToFollow = objectToFollow;
-            this.keepingDistance = keepingDistance;
+            this.targetTransform = targetTransform;
+            this.distanceToKeep = distanceToKeep;
         }
 
         protected override void Start()
         {
-            UpdateTarget();
-
-            chcker = CheckObject();
-            controller.StartCoroutine(chcker);
+            UpdateTargetPosition();
+            activeCoroutine = controller.StartCoroutine(UpdateLoop());
         }
 
         public override void End()
         {
-            controller.StopCoroutine(chcker);
+            controller.StopCoroutine(activeCoroutine);
         }
 
-        private IEnumerator CheckObject()
+        private IEnumerator UpdateLoop()
         {
             while (true)
             {
-                if (Vector3.Distance(objectToFollow.position, lastObjectPosition) > minMove)
-                    UpdateTarget();
-
+                if (Vector3.Distance(targetTransform.position, targetLastPosition) > positionUpdateThreshold)
+                {
+                    UpdateTargetPosition();
+                }
                 yield return new WaitForSeconds(updateDelay);
             }
         }
 
-        private void UpdateTarget()
+        private void UpdateTargetPosition()
         {
-            lastObjectPosition = objectToFollow.position;
-
-            controller.GoToTarget(objectToFollow.position, keepingDistance);
+            targetLastPosition = targetTransform.position;
+            controller.GoToTarget(targetLastPosition, distanceToKeep);
         }
     }
 }
