@@ -136,7 +136,7 @@ namespace Pathfinding
         /// </summary>
         private static List<PathPoint> CreatePath(PathPoint startPoint, PathPoint endPoint)
         {
-            List<PathPoint> openSet = new List<PathPoint>();
+            SortedCollection<PathPoint> openSet = new SortedCollection<PathPoint>((PathPoint first, PathPoint second) => first.fCost >= second.fCost);
             HashSet<PathPoint> closeSet = new HashSet<PathPoint>();
 
             startPoint.gCost = 0;
@@ -148,8 +148,7 @@ namespace Pathfinding
 
             while (openSet.Count > 0)
             {
-                PathPoint currPoint = openSet[0];
-                openSet.RemoveAt(0);
+                PathPoint currPoint = openSet.GetFirst();
 
                 closeSet.Add(currPoint);
 
@@ -172,16 +171,7 @@ namespace Pathfinding
                     neighbour.lastPoint = currPoint;
 
                     // add to open set
-                    int inserIndex = 0;
-                    for (int i = openSet.Count - 1; i >= 0; i--)
-                    {
-                        if (neighbour.fCost >= openSet[i].fCost)
-                        {
-                            inserIndex = i + 1;
-                            break;
-                        }
-                    }
-                    openSet.Insert(inserIndex, neighbour);
+                    openSet.Add(neighbour);
                 }
             }
 
