@@ -11,6 +11,7 @@ There are 3 basic states:
 - Go to
 - Follow object
 
+![image](https://github.com/user-attachments/assets/93470375-a9a4-4ce8-8774-90ad95cf3fe7)
 
 Pathfinding video: [youtube.com/hrober/pathfinding](https://www.youtube.com/watch?v=cvg2pc2LpKg)
 
